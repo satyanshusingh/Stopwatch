@@ -1,0 +1,130 @@
+var sec = document.getElementById("seconds")
+var min = document.getElementById("minutes")
+
+var start = document.getElementById("start")
+var lap = document.getElementById("lap")
+
+var cont = document.createElement("div")
+cont.setAttribute("id", "container")
+document.body.appendChild(cont)
+
+var flag = false
+
+var totalTime = 0
+var id = -1
+var sn = 0
+start.addEventListener("click", function (event) {
+
+  if (flag) {
+    start.innerHTML = "Start"
+    clearInterval(id)
+    flag = false
+    lap.innerHTML = "Reset"
+
+  }
+  else {
+    flag = true
+    start.innerHTML = "Stop"
+    lap.innerHTML = "lap"
+
+    id = setInterval(function () {
+      totalTime++
+
+      min.innerHTML = parseInt(totalTime / 60);
+      sec.innerHTML = totalTime % 60;
+    }, 1000)
+  }
+})
+var tt = 0
+lap.addEventListener("click", function (event) {
+  sn = sn + 1
+  //console.log(sn)
+
+  if (start.innerHTML === "Start") {
+    document.body.removeChild(cont)
+  }
+  if (sn == 1) {
+
+
+    var sno = document.createElement("p")
+    sno.setAttribute("id", "no")
+    cont.appendChild(sno)
+    sno.innerHTML = "Lap No."
+
+    var lpt = document.createElement("p")
+    lpt.setAttribute("id", "laptime")
+    cont.appendChild(lpt)
+    lpt.innerHTML = "Laptime"
+
+    var ot = document.createElement("p")
+    ot.setAttribute("id", "overaltime")
+    cont.appendChild(ot)
+    ot.innerHTML = "OverallTime"
+
+  }
+  var container = document.createElement("div")
+  container.setAttribute("id", "container")
+  document.body.appendChild(container)
+
+  var no = document.createElement("p")
+  no.setAttribute("id", "no")
+  container.appendChild(no)
+
+  var laptime = document.createElement("div")
+  laptime.setAttribute("id", "laptime")
+  container.appendChild(laptime)
+
+
+  var lm = document.createElement("label")
+  lm.setAttribute("id", "minutes")
+  laptime.appendChild(lm)
+  lm.innerHTML = "00"
+
+  var lc = document.createElement("label")
+  lc.setAttribute("id", "colon")
+  laptime.appendChild(lc)
+  lc.innerHTML = ":"
+
+  var ls = document.createElement("label")
+  ls.setAttribute("id", "seconds")
+  laptime.appendChild(ls)
+
+  var overaltime = document.createElement("div")
+  overaltime.setAttribute("id", "overaltime")
+  container.appendChild(overaltime)
+
+  var om = document.createElement("label")
+  om.setAttribute("id", "minutes")
+  overaltime.appendChild(om)
+  om.innerHTML = "00"
+
+  var oc = document.createElement("label")
+  oc.setAttribute("id", "colon")
+  overaltime.appendChild(oc)
+  oc.innerHTML = ":"
+
+  var os = document.createElement("label")
+  os.setAttribute("id", "seconds")
+  overaltime.appendChild(os)
+
+
+
+  no.innerHTML = sn
+
+  if (sn == 1) {
+
+    laptime.innerHTML = totalTime % 60
+    os.innerHTML = totalTime % 60
+    om.innerHTML = parseInt(totalTime / 60)
+
+  }
+
+  else {
+
+    os.innerHTML = totalTime % 60
+    om.innerHTML = parseInt(totalTime / 60)
+    ls.innerHTML = (totalTime - tt) % 60
+    lm.innerHTML = parseInt((totalTime - tt) / 60)
+  }
+  tt = totalTime
+})

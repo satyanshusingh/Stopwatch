@@ -1,0 +1,60 @@
+<html>
+<head>
+  <style>
+    body{
+      background: black;
+    }
+    #head{
+      color: white;
+    }
+    #seconds{
+      color: white;
+    }
+    #minutes{
+      color: white;
+    }
+    #colon{
+      color: white;
+    }
+    #no{
+      color: white;
+    }
+    #container{
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      margin: 10px;
+      border-bottom: 1px dotted white
+    }
+    #laptime{
+      color: white;
+    }
+    #overaltime{
+      color: white;
+    }
+    #start{
+      width: 15%;
+      height: 10%;
+    }
+    #lap{
+      width: 15%;
+      height: 10%;
+
+    }
+    </style>
+</head>
+<body>
+<h1 id="head">MM : SS</h1>
+<label id="minutes">00</label>
+<label id="colon">:</label>
+<label id="seconds">00</label>
+<br>
+<br>
+<button id="start">Start</button>
+<button id="lap">lap</button>
+<script src="sw.js"></script>
+
+
+
+</body>
+</html>
